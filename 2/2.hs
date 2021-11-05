@@ -40,9 +40,7 @@ countDoublings :: (Ord a, Num a) => [a] -> [Int]
 countDoublings (x:xs)
     | null remaining = []
     | otherwise = length took : countDoublings remaining
-    where splitted = span (< x * 2) xs
-          took = fst splitted
-          remaining = snd splitted
+    where (took, remaining) = span (< x * 2) xs
 
 
 countDoublings [] = []
