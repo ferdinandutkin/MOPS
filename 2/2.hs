@@ -1,8 +1,7 @@
 import Text.Printf (printf)
-import Text.Read.Lex (Number)
+
 deltaXFromTwoYears :: Float -> Float -> Float
 deltaXFromTwoYears current prev = current - prev
-
 
 deltaXFromAlphaAndBeta :: Float -> Float -> Float -> Float
 deltaXFromAlphaAndBeta cur a b = (a * cur) + (b * cur)
@@ -22,7 +21,7 @@ newXFromXAndGamma :: Float -> Float -> Float
 newXFromXAndGamma x g = g * x
 
 logisticNewX :: Float  -> Float -> Float -> Float
-logisticNewX current gamma max = current + gamma * (1 - current/max) * current
+logisticNewX current gamma max = current +  (gamma * (1 - current/max) * current)
 
 
 logisticModel :: Float  -> Float -> Float -> [Float]
@@ -32,10 +31,6 @@ logisticModel current gamma max = current : logisticModel new gamma max where ne
 model :: Float -> Float -> [Float]
 model current gamma = current : model new gamma where new = newXFromXAndGamma current gamma
 
-
-
-
-
 countDoublings :: (Ord a, Num a) => [a] -> [Int]
 countDoublings (x:xs)
     | null remaining = []
@@ -44,10 +39,6 @@ countDoublings (x:xs)
 
 
 countDoublings [] = []
-
-
-
-
 
 
 printLineByLine :: Show a => [a] -> IO ()
